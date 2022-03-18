@@ -2,17 +2,17 @@
 export default {
     name: "Menu",
     data: () => ({
-        activeIndex: '1',
+      activeIndex: '1',
     }),
     computed:{
-        isConnected(){
-            return false
-        }
+      isConnected(){
+          return false
+      }
     },
     methods: {
-        handleSelect: (key, keyPath) => {
-            console.log(key, keyPath)
-        }
+      handleSelect: (key, keyPath) => {
+          console.log(key, keyPath)
+      }
     }
 }
 </script>
