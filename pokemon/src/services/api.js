@@ -12,8 +12,10 @@ export const getPokemon = async (id) => {
     return res.data
 }
 
-export const createPokemon = async(name, description, type, image_path, price) => {
+export const createPokemon = async(username, password, name, description, type, image_path, price) => {
     const res = axios.post(`${apiUrl}/`, {
+        username,
+        password,
         name,
         description,
         type,
@@ -23,8 +25,10 @@ export const createPokemon = async(name, description, type, image_path, price) =
     return res.data
 }
 
-export const updatePokemon = async(id, name, description, type, image_path, price) => {
+export const updatePokemon = async(username, password, id, name, description, type, image_path, price) => {
     const res = axios.put(`${apiUrl}/`, {
+        username,
+        password,
         id,
         name, 
         description,
@@ -35,7 +39,18 @@ export const updatePokemon = async(id, name, description, type, image_path, pric
     return res.data
 }
 
-export const deletePokemon = async(id) => {
-    const res = axios.delete(`${apiUrl}/${id}`)
+export const deletePokemon = async(username, password, id) => {
+    const res = axios.delete(`${apiUrl}/${id}`, {
+        username,
+        password,
+    })
+    return res.data
+}
+
+export const connexion = async(username, password) => {
+    let res = await axios.post(`${apiUrl}/users/`, {
+        username,
+        password
+    })
     return res.data
 }
