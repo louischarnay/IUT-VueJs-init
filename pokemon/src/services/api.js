@@ -13,7 +13,7 @@ export const getPokemon = async (id) => {
 }
 
 export const createPokemon = async(name, description, type, image_path, price) => {
-    const res = axios.post(`${apiUrl}/`, {
+    const res = axios.post(`${apiUrl}/pokemons/`, {
         name,
         description,
         type,

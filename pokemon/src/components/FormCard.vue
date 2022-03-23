@@ -83,7 +83,7 @@ export default {
             name: "",
             type: "",
             description: "",
-            price: 0.00,
+            price: 0,
             path: "",
         })
     }),
@@ -93,7 +93,6 @@ export default {
         },
     }
 }
-
 </script>
 
 <template>
