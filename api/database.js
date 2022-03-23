@@ -32,3 +32,16 @@ export const Pokemon = sequelize.define('Pokemon', {
 })
 
 Pokemon.sync()
+
+export const User = sequelize.define('User', {
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+})
+
+User.sync()

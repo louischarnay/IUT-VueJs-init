@@ -13,7 +13,7 @@ export default async function (fastify, opts) {
         return await Pokemon.findByPk(request.params.id)
     })
 
-    fastify.put('/create', async function(request){
+    fastify.post('/', async function(request){
         return await Pokemon.create({
             name: request.body.name,
             type: request.body.type,
@@ -23,7 +23,7 @@ export default async function (fastify, opts) {
         })
     })
     
-    fastify.put('/update', async function(request){
+    fastify.put('/', async function(request){
         let changes = {}
         if(request.body.name) 
             changes.name = request.body.name
