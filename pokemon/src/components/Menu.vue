@@ -26,7 +26,7 @@ export default {
     <el-menu-item v-if="!isConnected" index="2" disabled>Add</el-menu-item>
     <router-link :to="'/add'"><el-menu-item v-if="isConnected" index="2">Add</el-menu-item></router-link>
 
-    <router-link :to="'/logout'"><el-menu-item v-if="isConnected" index="3">Logout</el-menu-item></router-link>
+    <router-link :to="'/'"><el-menu-item v-if="isConnected" index="3">Logout</el-menu-item></router-link>
     <router-link :to="'/login'"><el-menu-item v-if="!isConnected" index="3">Login</el-menu-item></router-link>
   </el-menu>
 </template>
