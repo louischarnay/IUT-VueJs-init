@@ -1,6 +1,6 @@
 <script>
     import { reactive } from 'vue'
-    import { connexion } from '../services/api.js'
+    import { connexion, createPokemon, getAllPokemons, getPokemon } from '../services/api.js'
     export default {
         data: () => ({
             form: reactive ({
@@ -16,6 +16,11 @@
                 localStorage.setItem("password", this.form.password)
                 this.$router.push("/")
               }
+            },
+            async onSubmit2(){
+              let res = await createPokemon(localStorage.getItem('username'), localStorage.getItem('password'), 'name', 'description', 'type', 'image', 12)
+              console.log(res);
+
             }
         }
     }
@@ -31,7 +36,7 @@
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Connexion</el-button>
-      <el-button>Annuler</el-button>
+      <el-button @click="onSubmit2">Annuler</el-button>
     </el-form-item>
   </el-form>
 </template>

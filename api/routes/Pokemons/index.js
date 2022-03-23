@@ -1,7 +1,13 @@
 'use strict'
 
-import { connexion } from '../../../pokemon/src/services/api.js'
-import { Pokemon } from '../../database.js'
+import { Pokemon, User } from '../../database.js'
+
+async function connexion(fastify, username, password){
+    let user =  await User.findByPk(1)
+    if(username === user.username && password === user.password)
+        return true
+    return false
+}
 
 export default async function (fastify, opts) {
     fastify.get('/', async function(){
@@ -15,7 +21,7 @@ export default async function (fastify, opts) {
     })
 
     fastify.post('/', async function(request){
-        if(await connexion(request.body.username, request.body.password)){
+        if(await connexion(this, request.body.username, request.body.password)){
             return await Pokemon.create({
                 name: request.body.name,
                 type: request.body.type,
@@ -23,12 +29,13 @@ export default async function (fastify, opts) {
                 image_path: request.body.image_path,
                 description: request.body.description
             })
+        } else {
+            return false
         }
-        return false
     })
     
     fastify.put('/', async function(request){
-        if(await connexion(request.body.username, request.body.password)){
+        if(await connexion(this, request.body.username, request.body.password)){
             let changes = {}
             if(request.body.name) 
                 changes.name = request.body.name
@@ -50,7 +57,7 @@ export default async function (fastify, opts) {
     })
 
     fastify.delete('/:id', async function(request){
-        if(await connexion(request.body.username, request.body.password)){
+        if(await connexion(this, request.body.username, request.body.password)){
             return result = Pokemon.destroy({
                 where: {
                     id: request.params.id
