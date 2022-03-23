@@ -1,5 +1,7 @@
 <script>
 import { reactive } from 'vue'
+import { createPokemon } from '../services/api'
+
 export default {
     data: () => ({
         labelPosition: "top",
@@ -78,17 +80,17 @@ export default {
             }
         ],
         form: reactive ({
-            name: '',
-            type: '',
-            description: '',
+            name: "",
+            type: "",
+            description: "",
             price: 0.00,
-            path: '',
+            path: "",
         })
     }),
     methods: {
-        onSubmit() {
-            console.log('submit!')
-        }
+        async onSubmit() {
+            await createPokemon(this.form.name, this.form.description, this.form.type, this.form.path, this.form.price)
+        },
     }
 }
 
@@ -100,22 +102,22 @@ export default {
   :label-position="labelPosition"
   label-width="120px"
   >
-    <el-form-item label="Pokemon card name" required>
+    <el-form-item label="Pokemon card name">
       <el-input v-model="form.name" />
     </el-form-item>
-    <el-form-item label="Pokemon card type" required>
+    <el-form-item label="Pokemon card type">
       <el-select v-model="form.type" placeholder="please select the type">
         <el-option v-for="(item, index) in types" :label="item.label" :value="item.value" />
       </el-select>
     </el-form-item>
-    <el-form-item label="Pokemon card description" required>
+    <el-form-item label="Pokemon card description">
       <el-input v-model="form.desc" type="textarea" />
     </el-form-item>
-    <el-form-item label="Pokemon card price" required>
+    <el-form-item label="Pokemon card price">
       <el-input v-model="form.price" type="number" min="0.00" max="any" step="1.00" />
     </el-form-item>
-    <el-form-item label="Pokemon card image" required>
-      <el-input v-model="form.path" type="file"/>
+    <el-form-item label="Pokemon card image">
+      <el-input v-model="form.path" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Create</el-button>

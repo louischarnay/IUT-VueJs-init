@@ -6,7 +6,7 @@ export default {
   }),
   computed:{
     isConnected(){
-        return false
+        return true
     }
   },
 }
