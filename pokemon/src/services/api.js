@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const apiUrl = 'https://localhost:3001'
+const apiUrl = 'http://localhost:3001'
 
 export const getAllPokemons = async () => {
-    const res = await axios.get(`${apiUrl}/pokemons`)
+    const res = await axios.get(`${apiUrl}/pokemons/`)
     return res.data
 }
 
