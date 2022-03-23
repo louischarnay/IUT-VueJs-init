@@ -16,11 +16,7 @@
 </script>
 
 <template>
-  <el-form 
-  :model="form" 
-  :label-position="labelPosition"
-  label-width="120px"
-  >
+  <el-form :model="form" :label-position="labelPosition" label-width="120px">
     <el-form-item label="Username" required>
       <el-input v-model="form.username" />
     </el-form-item>
