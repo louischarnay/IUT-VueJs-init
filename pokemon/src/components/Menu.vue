@@ -21,10 +21,12 @@ export default {
     background-color="#545c64"
     active-text-color="#ffd04b"
   >
-    <el-menu-item index="1"><router-link :to="'/'">Home</router-link></el-menu-item>
-    <el-menu-item v-if="isConnected" index="2"><router-link :to="'/'">Home</router-link></el-menu-item>
+    <router-link :to="'/'"><el-menu-item index="1">Home</el-menu-item></router-link>
+
     <el-menu-item v-if="!isConnected" index="2" disabled>Add</el-menu-item>
-    <el-menu-item v-if="isConnected" index="3">Logout</el-menu-item>
-    <el-menu-item v-if="!isConnected" index="3"><router-link :to="'/login'">Login</router-link></el-menu-item>
+    <router-link :to="'/add'"><el-menu-item v-if="isConnected" index="2">Add</el-menu-item></router-link>
+
+    <router-link :to="'/logout'"><el-menu-item v-if="isConnected" index="3">Logout</el-menu-item></router-link>
+    <router-link :to="'/login'"><el-menu-item v-if="!isConnected" index="3">Login</el-menu-item></router-link>
   </el-menu>
 </template>
