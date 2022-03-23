@@ -90,6 +90,7 @@ export default {
     methods: {
         async onSubmit() {
             await createPokemon(this.form.name, this.form.description, this.form.type, this.form.path, this.form.price)
+            this.$router.push('/');
         },
     }
 }
