@@ -20,7 +20,7 @@ export const createPokemon = async(name, description, type, image_path, price) =
         image_path,
         price
     })
-    return res.data
+    return res
 }
 
 export const updatePokemon = async(id, name, description, type, image_path, price) => {
