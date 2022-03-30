@@ -1,6 +1,6 @@
 <script>
     import { reactive } from 'vue'
-    import { connexion, createPokemon, getAllPokemons, getPokemon } from '../services/api.js'
+    import { connexion } from '../services/api.js'
     export default {
         data: () => ({
             form: reactive ({

@@ -102,7 +102,6 @@ export default {
             this.$router.push('/');
             } else {
                 this.error = "Empty rows"
-                console.log(this.error);
             }
         },
     }
