@@ -85,13 +85,25 @@ export default {
             description: "",
             price: 0,
             path: "",
-        })
+        }),
+        error: ""
     }),
     methods: {
         async onSubmit() {
-            let res = await createPokemon(this.form.name, this.form.description, this.form.type, this.form.path, this.form.price)
-            console.log(res)
+            if(this.form.name && this.form.description && this.form.type && this.form.path && this.form.price){
+            await createPokemon(
+                localStorage.getItem("username"),
+                localStorage.getItem("password"),
+                this.form.name, 
+                this.form.description, 
+                this.form.type, 
+                this.form.path, 
+                this.form.price)
             this.$router.push('/');
+            } else {
+                this.error = "Empty rows"
+                console.log(this.error);
+            }
         },
     }
 }
@@ -125,4 +137,5 @@ export default {
       <el-button>Cancel</el-button>
     </el-form-item>
   </el-form>
+  <p>{{error}}</p>
 </template>
