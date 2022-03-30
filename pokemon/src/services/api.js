@@ -26,7 +26,7 @@ export const createPokemon = async(username, password, name, description, type, 
 }
 
 export const updatePokemon = async(username, password, id, name, description, type, image_path, price) => {
-    const res = axios.put(`${apiUrl}/pokemons/`, {
+    const res = await axios.put(`${apiUrl}/pokemons/`, {
         username,
         password,
         id,
