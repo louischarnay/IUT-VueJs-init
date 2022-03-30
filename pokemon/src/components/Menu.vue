@@ -15,10 +15,10 @@ export default {
   async mounted() {
     if(await connexion(localStorage.getItem('username'), localStorage.getItem('password'))){
       this.isConnected = true
-      console.log("connecte")
+      console.log("connected")
       return
     }
-    console.log("loupé")
+    console.log("unconnected")
   }
 }
 </script>

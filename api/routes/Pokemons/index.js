@@ -12,7 +12,7 @@ async function connexion(fastify, username, password){
 export default async function (fastify, opts) {
     fastify.get('/', async function(){
         return await Pokemon.findAll({
-            attributes: ['name', 'type', 'price', 'image_path']
+            attributes: ['id', 'name', 'type', 'price', 'image_path']
         })
     })
 
@@ -56,9 +56,9 @@ export default async function (fastify, opts) {
         return false
     })
 
-    fastify.delete('/:id', async function(request){
+    fastify.post('/:id', async function(request){
         if(await connexion(this, request.body.username, request.body.password)){
-            return result = Pokemon.destroy({
+            return Pokemon.destroy({
                 where: {
                     id: request.params.id
                 }

@@ -3,7 +3,9 @@ import { getAllPokemons } from "../services/api";
 
     export default {
         name: "Home",
-        data: () => ({pokemons:[]}),
+        data: () => ({
+            pokemons:[]
+            }),
         mounted() {
             getAllPokemons().then( pokemons => this.pokemons = pokemons)
         },
@@ -11,6 +13,5 @@ import { getAllPokemons } from "../services/api";
 </script>
 
 <template>
-    <p></p>
-    <img v-for="item in pokemons" :src="item.image_path" :alt="item.name" />
+    <a v-for="item in pokemons" :href="'/' + item.id" ><img :src="item.image_path" :alt="item.name" /></a>
 </template>

@@ -40,9 +40,9 @@ export const updatePokemon = async(username, password, id, name, description, ty
 }
 
 export const deletePokemon = async(username, password, id) => {
-    const res = axios.delete(`${apiUrl}/pokemons/${id}`, {
+    const res = await axios.post(`${apiUrl}/pokemons/${id}`, {
         username,
-        password,
+        password
     })
     return res.data
 }
