@@ -19,8 +19,8 @@ import { getAllPokemons } from "../services/api";
                 return price
             }
         },
-        methods() {
-            filterTag = (value, row) => {
+        methods: {
+            filterTag(value, row) {
                 return row.type === value
             }
         }
@@ -29,11 +29,10 @@ import { getAllPokemons } from "../services/api";
 
 <template>
     <p>Total price of the collection : {{getFullPrice}} €</p>
-    <a v-for="item in pokemons" :href="'/' + item.id" ><img :src="item.image_path" :alt="item.name" /></a>
     <el-table ref="tableRef" :data="this.pokemons" style="width: 100%">
         <el-table-column prop="image_path" label="Image" width="250">
             <template #default="scope">
-                <img class="simpleCard" :src="scope.row.image_path"/>
+                <a :href="'/' + scope.row.id"><img class="simpleCard" :src="scope.row.image_path"/></a>
             </template>
         </el-table-column>
         <el-table-column prop="name" label="Name" width="180" />
@@ -44,10 +43,26 @@ import { getAllPokemons } from "../services/api";
             label="Type" 
             width="180" 
             :filters="[
-                { text: 'Home', value: 'Home' },
-                { text: 'Office', value: 'Office' },
+                { text: 'Normal', value: 'Normal' },
+                { text: 'Fire', value: 'Fire' },
+                { text: 'Water', value: 'Water' },
+                { text: 'Grass', value: 'Grass' },
+                { text: 'Electric', value: 'Electric' },
+                { text: 'Ice', value: 'Ice' },
+                { text: 'Fighting', value: 'Fighting' },
+                { text: 'Poison', value: 'Poison' },
+                { text: 'Ground', value: 'Ground' },
+                { text: 'Flying', value: 'Flying' },
+                { text: 'Psychic', value: 'Psychic' },
+                { text: 'Bug', value: 'Bug' },
+                { text: 'Rock', value: 'Rock' },
+                { text: 'Ghost', value: 'Ghost' },
+                { text: 'Dark', value: 'Dark' },
+                { text: 'Dragon', value: 'Dragon' },
+                { text: 'Steel', value: 'Steel' },
+                { text: 'Fairy', value: 'Fairy' },
             ]"
-            :filter-method="this.filterTag"
+            :filter-method="filterTag"
             filter-placement="bottom-end"
         >
             <template #default="scope">
