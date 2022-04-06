@@ -11,9 +11,7 @@ async function connexion(fastify, username, password){
 
 export default async function (fastify, opts) {
     fastify.get('/', async function(){
-        return await Pokemon.findAll({
-            attributes: ['name', 'type', 'price', 'image_path']
-        })
+        return await Pokemon.findAll()
     })
 
     fastify.get('/:id', async function(request){
